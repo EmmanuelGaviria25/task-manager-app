@@ -51,7 +51,7 @@ function TaskItem({ task, onUpdate, onDelete }) {
         </>
       ) : (
         <>
-          <a onClick={handleCheck} style={{cursor:'pointer', userSelect: 'none'}}>
+          <span onClick={handleCheck} style={{cursor:'pointer', userSelect: 'none'}}>
               {isChecked ? (
                 <>
                   <span style={{color: '#768d80'}}>
@@ -71,7 +71,7 @@ function TaskItem({ task, onUpdate, onDelete }) {
                   </span>
                 </>
               )}
-          </a>
+          </span>
           <div className="task-buttons">
             <button className="edit-btn" onClick={handleToggleEdit}>
               <FontAwesomeIcon icon={faEdit} />

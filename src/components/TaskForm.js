@@ -14,6 +14,7 @@ function TaskForm() {
   return (
     <div>
       <input
+        className='input-add-task'
         type="text"
         placeholder="Enter task title"
         value={taskTitle}

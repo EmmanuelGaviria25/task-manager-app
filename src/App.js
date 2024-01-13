@@ -17,44 +17,44 @@
 
 // App.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import LoginPage from './components/LoginPage';
-import TaskList from './components/TaskList';
-import TaskForm from './components/TaskForm';
-import { auth } from './firebase'; // Ajusta la ruta según tu estructura
+import LoginPage from './components/auth/LoginPage';
+import { observeAuthState } from './firebase'; // Ajusta la ruta según tu estructura
+import TaskManager from './components/TaskManager';
+import './App.css';
 
 const App = () => {
   const [user, setUser] = useState(null);
 
-  const handleLogin = () => {
-    setUser(auth.currentUser);
-  };
-
-  const handleLogout = () => {
-    auth.signOut();
-    setUser(null);
-  };
+  useEffect(() => {
+    observeAuthState((user) => {
+      setUser(user);
+    });
+  }, []);
 
   return (
-    <Router>
-      <div>
-        <h1>Gestor de Tareas</h1>
-        {user ? (
-          <>
-            <button onClick={handleLogout}>Cerrar Sesión</button>
-            <TaskForm />
-            <TaskList />
-          </>
-        ) : (
-          <Redirect to="/login" />
-        )}
-        <Route
-          path="/login"
-          render={() => <LoginPage onLogin={handleLogin} />}
-        />
-      </div>
-    </Router>
+    
+    <div className="container">
+      <Router>
+        <div>
+          {user ? (
+            <>
+            <Route 
+              path="/tasks-manager"
+              render={() => <TaskManager />}
+            />
+            </>
+          ) : (
+            <Redirect to="/login" />
+          )}
+          <Route
+            path="/login"
+            render={() => <LoginPage/>}
+          />
+        </div>
+      </Router>
+    </div>
   );
 };
 

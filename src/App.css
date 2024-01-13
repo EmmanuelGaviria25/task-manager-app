@@ -52,6 +52,10 @@ input {
   background-color: #f4f6f8; 
 }
 
+.input-add-task {
+  width: 64%;
+}
+
 .task-container {
   max-height: 500px;
   overflow-y: auto;
@@ -82,6 +86,15 @@ input {
   cursor: pointer;
 }
 
+.logout-btn {
+  float: right;
+  background-color: rgb(185, 70, 70);
+}
+
+.logout-btn:hover {
+  background-color: rgb(134, 57, 57);
+}
+
 .edit-btn {
   background-color: #2eaa62;
 }
@@ -109,4 +122,41 @@ input {
 input {
   padding: 8px;
   margin-right: 8px;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: #357ae8;
+}
+
+.google-icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
