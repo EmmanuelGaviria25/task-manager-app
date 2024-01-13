@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import taskService from '../services/taskService';
 
-function TaskForm() {
+const TaskForm = () => {
   const [taskTitle, setTaskTitle] = useState('');
 
   const handleAddTask = () => {

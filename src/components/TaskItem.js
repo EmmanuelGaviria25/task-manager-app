@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCheckSquare, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
-function TaskItem({ task, onUpdate, onDelete }) {
+const TaskItem = ({ task, onUpdate, onDelete }) => {
   const [isEditing, setEditing] = useState(false);
   const [isChecked, setCheck] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState(task.title);

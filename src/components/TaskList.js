@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TaskItem from './TaskItem';
 import taskService from '../services/taskService';
 
-function TaskList() {
+const TaskList = () => {
   const [, forceUpdate] = useState();
 
   useEffect(() => {

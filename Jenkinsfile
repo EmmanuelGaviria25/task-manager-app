@@ -2,31 +2,37 @@
 pipeline {
     agent any
 
+    environment {
+        FIREBASE_TOKEN = credentials('firebase-token')
+    }
+
     stages {
-        stage('Instalar dependencias') {
+
+        stage('Checkout') {
             steps {
-                script {
-                    // Ejecutar comandos para instalar dependencias
-                    sh 'npm install'
-                }
+                // Clonar el repositorio
+                checkout scm
             }
         }
-
-        stage('Construir la aplicación') {
+        stage('Install and Build') {
             steps {
+                // Instalar dependencias y construir la aplicación
                 script {
-                    // Ejecutar comandos para construir la aplicación
+                    sh 'npm install'
                     sh 'npm run build'
                 }
             }
         }
 
-        // Agrega más etapas según sea necesario
-    }
-
-    post {
-        always {
-            // Puedes agregar acciones adicionales después de las etapas
+        stage('Deploy to Firebase') {
+            steps {
+                // Desplegar la aplicación en Firebase Hosting
+                script {
+                    sh 'npm install -g firebase-tools'
+                    sh 'firebase use --add <alias>'
+                    sh 'firebase deploy --token $FIREBASE_TOKEN'
+                }
+            }
         }
     }
 }

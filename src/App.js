@@ -18,7 +18,7 @@
 // App.js
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import LoginPage from './components/auth/LoginPage';
 import { observeAuthState } from './firebase'; // Ajusta la ruta según tu estructura
 import TaskManager from './components/TaskManager';
@@ -38,20 +38,20 @@ const App = () => {
     <div className="container">
       <Router>
         <div>
+
           {user ? (
             <>
-            <Route 
-              path="/tasks-manager"
-              render={() => <TaskManager />}
-            />
+            <Redirect to="/tasks-manager" />
             </>
           ) : (
             <Redirect to="/login" />
           )}
-          <Route
-            path="/login"
-            render={() => <LoginPage/>}
-          />
+          
+          <Switch>
+            <Route path="/tasks-manager" component={TaskManager} />
+            <Route path="/login" component={LoginPage} />
+          </Switch>
+          
         </div>
       </Router>
     </div>

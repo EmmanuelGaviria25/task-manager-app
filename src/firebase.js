@@ -21,7 +21,6 @@ const auth = getAuth(app);
 // Agrega una función para observar cambios en la autenticación
 const observeAuthState = (callback) => {
   onAuthStateChanged(auth, (user) => {
-    console.log('user', user);
     callback(user);
   });
 };
