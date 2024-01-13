@@ -23,6 +23,7 @@ import LoginPage from './components/auth/LoginPage';
 import { observeAuthState } from './firebase'; // Ajusta la ruta según tu estructura
 import TaskManager from './components/TaskManager';
 import './App.css';
+import logo from './logo.png';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -38,7 +39,9 @@ const App = () => {
     <div className="container">
       <Router>
         <div>
-
+          <div className="centered-container">
+            <img src={logo} alt="Logo" className="centered-image" /> {/* Usa la imagen importada */}
+          </div>
           {user ? (
             <>
             <Redirect to="/tasks-manager" />

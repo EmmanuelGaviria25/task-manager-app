@@ -18,6 +18,17 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Esto centra la imagen verticalmente en la pantalla completa */
+}
+
+.centered-image {
+  width: 70px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: auto;
+}
+
 h1 {
   text-align: center;
   color: #333;
